@@ -1,7 +1,7 @@
 from audioop import reverse
 
 
-def isPalindrome(word, lowercase):
+def is_palindrome(word, lowercase):
     reversed = ""
     # reversing the string
     for i in word:
@@ -12,6 +12,6 @@ def isPalindrome(word, lowercase):
     else:
         lowercase = False
         return lowercase
-print(isPalindrome("saippuakauppias", lowercase=True)) # True
-print(isPalindrome("Saippuakauppias", lowercase=True)) # False
-print(isPalindrome("Minnaah", lowercase=True)) # False
+print(is_palindrome("saippuakauppias", lowercase=True)) # True
+print(is_palindrome("Saippuakauppias", lowercase=True)) # False
+print(is_palindrome("Minnaah", lowercase=True)) # False
