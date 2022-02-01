@@ -1,5 +1,5 @@
-def output(word, count):
+def output(word, count = 1):
     print(word*count)
 
-output("hello", 1)
+output("hello")
 output("hello", 5)

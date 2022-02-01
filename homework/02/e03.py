@@ -11,11 +11,9 @@ print(b, "\n")
 print(c)
 print(d)
 
-# will only print "hello"
-print(a or b) 
-# this will print "helloo!"
-print(a and b, "\n")
-
+# a = "hel'lo" -> hel'lo
+# b = 'he"llo' -> he"llo
+# c = "hel"lo" -> doesn't print anything!
 
 name = "Athena"
 # print("Hello", name)

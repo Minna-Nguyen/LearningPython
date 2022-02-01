@@ -1,9 +1,8 @@
 def reverse(name):
     reversed = ""
-    # range(0,9) -> 0 - 8
-    x = range(len(name)+1)
-    
-    for x in name:
-        reversed = x + reversed
+
+    # nimen pitkä pituus laskee nollaan, yksi kerrallaan
+    for character in range(len(name) - 1, -1 ,-1):
+        reversed += name[character]
     return reversed
 print(reverse("Minnulii"))

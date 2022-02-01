@@ -3,15 +3,28 @@ from audioop import reverse
 
 def is_palindrome(word, lowercase):
     reversed = ""
-    # reversing the string
-    for i in word:
-        reversed = i + reversed
-    # comparing if it's a palindrome
-    if word == reversed:
-        return lowercase
+    # the word isn't case sensitive
+    if lowercase == True:
+        word = word.lower()
+        for index in range(len(word) - 1, -1 ,-1):
+            reversed += word[index]
+        # checks if the word is a palindrome
+        if word == reversed:
+            return lowercase
+        else:
+            return lowercase
+
+    # the case is case sensitive
     else:
-        lowercase = False
-        return lowercase
-print(is_palindrome("saippuakauppias", lowercase=True)) # True
-print(is_palindrome("Saippuakauppias", lowercase=True)) # False
-print(is_palindrome("Minnaah", lowercase=True)) # False
+        for index in range(len(word) - 1, -1 ,-1):
+            reversed += word[index]
+        # Checks if the word is a palindrome
+        if word == reversed:
+            return lowercase
+        else:
+            return lowercase
+# print(is_palindrome("Saippuakauppias", True)) # True
+# print(is_palindrome("Saippuakauppias", False)) # False
+# print(is_palindrome("saippuakauppias", True)) # True
+print(is_palindrome("saippuakauppias", False)) # True
+# print(is_palindrome("Minnaah", False)) # False
