@@ -1,8 +1,8 @@
 # function that returns an int between range a - b
 
-def get_int(sentence, a, b):
+def get_int(sentence, min, max):
     age = int(input(sentence))
-    while age < a or age > b:
+    while age < min or age > max:
         print("Age must be between 0 - 120")
         age = int(input())
     return age
