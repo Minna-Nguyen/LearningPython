@@ -1,0 +1,37 @@
+from string_helper import *
+# display the banner
+title = "roasting"
+print(get_title(title, 30, "*"))
+
+ask_ignore_case = input("Ignore case? 'y/n' \n")
+while True:
+    if ask_ignore_case == "y":
+        answer = True
+        break
+    elif ask_ignore_case == "n":
+        answer = False
+        break
+    else:
+        print("Ignore case? Please type 'y' or 'n'")
+        valid_answer = input()
+        
+        if valid_answer == "y":
+            answer = True
+            break
+        elif valid_answer == "n":
+            answer = False
+            break
+user_name = input("Your name: ")
+
+if is_name(user_name, answer):
+    print(f"Hello {user_name} and welcome to the {title.title()} - game!")
+else:
+    print("Who are you?  Name should be 'first name' and 'last name' format.")
+
+# testing
+# try:
+#     age = int(input("give age: "))
+# except:
+#     print("please give a number")
+# else:
+#     print("everything went fine")
