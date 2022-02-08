@@ -104,3 +104,5 @@ def is_name(name, ignore_case=False):
             name_format = False
         
     return name_format
+
+# print(get_title("HELLO", 30, '+'))
