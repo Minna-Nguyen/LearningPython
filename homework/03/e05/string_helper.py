@@ -28,7 +28,7 @@ def get_title(title, amount, char):
         # title.center(x, "y") makes centered title with evenly spaced at number x with character y
         otsikko = otsikko.center(amount - 2, " ")
         return borderline + "\n" + char + otsikko + char + "\n" + borderline
-    else:
+    elif len(title) == amount:
         return "Invalid values, title length is > graph length"
 
 """
@@ -105,4 +105,4 @@ def is_name(name, ignore_case=False):
         
     return name_format
 
-# print(get_title("HELLO", 30, '+'))
+print(get_title("hhh", 3, '+'))
