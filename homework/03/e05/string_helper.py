@@ -29,7 +29,7 @@ def get_title(title, amount, char):
         otsikko = otsikko.center(amount - 2, " ")
         return borderline + "\n" + char + otsikko + char + "\n" + borderline
     elif len(title) == amount:
-        return "Invalid values, title length is > graph length"
+        return "Invalid values, title length cannot be equal to graph length or be greater than graph lenght"
 
 """
 Module that contains name format related functions.

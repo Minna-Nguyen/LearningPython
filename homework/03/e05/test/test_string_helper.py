@@ -27,4 +27,4 @@ class TestStringHelper(unittest.TestCase):
 -----
 """.strip()
 
-        self.assertEqual(get_title("abc",3, "-"), "Invalid values, title length is > graph length")
+        self.assertEqual(get_title("abc",3, "-"), "Invalid values, title length cannot be equal to graph length or be greater than graph lenght")
