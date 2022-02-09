@@ -22,4 +22,10 @@ class TestStringHelper(unittest.TestCase):
         self.assertEqual(get_title("palindrome app", 40, "*"), test_title2)
 
         self.assertRaises(Exception, get_title, "abc", 2, "*")
+        self.assertRaises(Exception, get_title, "abc", 2, "**")
+        self.assertRaises(Exception, get_title, "abc", "?", "*")
+        self.assertRaises(Exception, get_title, 200, 2, "*")
+        self.assertRaises(Exception, get_title, "abc", 3, "*")
+        self.assertRaises(Exception, get_title, "abc", "puu", "*")
+        self.assertRaises(Exception, get_title, [12,33,2], 2, "*")
         
