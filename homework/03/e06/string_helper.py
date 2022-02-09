@@ -18,15 +18,17 @@ def get_title(title, amount, char):
     -------
         If the borderline is bigger than the title, the banner will be returned. Otherwise not.
     """
+    if type(title) != str or type(amount) != int or type(char) != str:
+        raise Exception("Must be str, in and str")
     if len(char) != 1:  
         raise Exception("Char should have length of one.")
-    if title != str(title):
-        raise Exception("Title should be string type.")
-    if len(title) > amount:
-        raise Exception("Invalid values, title length is > graph length")
-    # check if 'amount' variable is not an int type, then raise Exception
-    if not isinstance(amount, int):
-        raise Exception("Must be a number.")
+    if len(title) > amount or len(title) == amount:
+        raise Exception("Invalid values, title length cannot be equal to graph length or be greater than graph lenght")
+    """
+    check if 'amount' variable is not an int type, then raise Exception
+    """
+    # if not isinstance(amount, int):
+    #     raise Exception("Must be a number.")
 
     borderline = ""
     if len(title) < amount:
