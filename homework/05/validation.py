@@ -41,3 +41,32 @@ def is_date(date):
                         match_object = re.search("^[0-9]{4}\-.[0-9]\-.[0-9]$", date_ok)
 
                         return bool(match_object)
+                        
+"""
+Module that validates the given email.
+"""
+def is_email(email):
+    """A function that validates the given email address form.
+
+    Parameter
+    ---------
+        email: 'String'
+            Given string will be tested if it's proper email address or not.
+    
+    Exception
+    ---------
+        - value must be a string
+    
+    Return
+    ------
+        value: 'bool'
+            If given email format is in correct form, returns True else returns False.
+    """
+    if not isinstance(email, str):
+        raise Exception("Given argument must be a string")
+    
+    regex_with_char = "^([a-z0-9]+[._-]{1})+([a-z0-9]{1,})+@+[a-z]+[.][a-z]{2,3}$"
+    regex_only_name = "^([a-z0-9])+@+[a-z]+[.][a-z]{2,3}$"
+
+    regex = f"(^{regex_with_char})|(^{regex_only_name})$"
+    return bool(re.search(regex, email))

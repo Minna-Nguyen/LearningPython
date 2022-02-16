@@ -1,10 +1,11 @@
 import unittest
-from validation import is_date
+from validation import *
 
 class TestValidation(unittest.TestCase):
     def test_is_date(self):
         self.assertTrue(is_date("2022-02-16"))
         self.assertTrue(is_date("2022-12-31"))
+        
         self.assertFalse(is_date("2001-16-02"))
         self.assertFalse(is_date("2001-16-021"))
         self.assertFalse(is_date("2001-166-01"))
@@ -23,3 +24,41 @@ class TestValidation(unittest.TestCase):
         self.assertRaises(Exception, is_date, tuple())
         self.assertRaises(Exception, is_date, dict())
         self.assertRaises(Exception, is_date, set())
+
+    def test_is_email(self):
+        self.assertTrue(is_email("minna.nguyen@tuni.fi"))
+        self.assertTrue(is_email("minna@tuni.fi"))
+        self.assertTrue(is_email("minna.n@tuni.fi"))
+        self.assertTrue(is_email("minna-n@tuni.fi"))
+        self.assertTrue(is_email("minna_n@tuni.fi"))
+        self.assertTrue(is_email("minna.minna123@tuni.fi"))
+        self.assertTrue(is_email("123minna.nguyen@tuni.fi"))
+        self.assertTrue(is_email("minna123@tuni.fi"))
+        self.assertTrue(is_email("123minna@tuni.fi"))
+        self.assertTrue(is_email("123minna@tuni.com"))
+        self.assertTrue(is_email("123minna123@tuni.fi"))
+        self.assertTrue(is_email("ei.min.na123@tuni.fi"))
+        
+        self.assertFalse(is_email("123minna123tuni.fi"))
+        self.assertFalse(is_email(".minnatuni.fi"))
+        self.assertFalse(is_email("minna@tuni.c"))
+        self.assertFalse(is_email("minna.mss@tuni.c"))
+        self.assertFalse(is_email("minna._@tuni.co"))
+        self.assertFalse(is_email("minna..def@tuni.fi"))
+        self.assertFalse(is_email("minna-@tuni.fi"))
+        self.assertFalse(is_email(".minna@tuni.fi"))
+        self.assertFalse(is_email("minna abc@tuni.fi"))
+        self.assertFalse(is_email("Minna.Abc@tuni.fi"))
+        self.assertFalse(is_email("minna.abc@ tuni.fi"))
+        self.assertFalse(is_email("minna.abc@tuni .org"))
+        self.assertFalse(is_email(" minna.abc@tuni.org"))
+        self.assertFalse(is_email("minna.abc@123.org"))
+        self.assertFalse(is_email("minnå.äbc@domain.org"))
+        self.assertFalse(is_email("minnå.äbc@domain.orgs"))
+        self.assertFalse(is_email("minna.abc@domain.orgs"))
+
+        self.assertRaises(Exception, is_email, int)
+        self.assertRaises(Exception, is_email, tuple())
+        self.assertRaises(Exception, is_email, dict())
+        self.assertRaises(Exception, is_email, set())
+        
