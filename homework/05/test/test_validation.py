@@ -62,3 +62,31 @@ class TestValidation(unittest.TestCase):
         self.assertRaises(Exception, is_email, dict())
         self.assertRaises(Exception, is_email, set())
         
+    def test_is_personal_id(self):
+        self.assertTrue(is_personal_id("131052-308T"))
+        self.assertTrue(is_personal_id("120464-121C"))
+
+        self.assertFalse(is_personal_id("330101-234M"))
+        self.assertFalse(is_personal_id("000101-234M"))
+        self.assertFalse(is_personal_id("122101-003M"))
+        self.assertFalse(is_personal_id("101301-234M"))
+        self.assertFalse(is_personal_id("220001-234M"))
+
+        self.assertFalse(is_personal_id("100701-000M"))
+        self.assertFalse(is_personal_id("100701-001M"))
+        self.assertFalse(is_personal_id("100701-999M"))
+        self.assertFalse(is_personal_id("100701-234I"))
+        self.assertFalse(is_personal_id("100701-234G"))
+        self.assertFalse(is_personal_id("100701-234Z"))
+        self.assertFalse(is_personal_id("100701-234O"))
+        self.assertFalse(is_personal_id("100701-234Q"))
+
+        self.assertFalse(is_personal_id("100701a234M"))
+        self.assertFalse(is_personal_id("100701AA234M"))
+        self.assertFalse(is_personal_id("100701--2342"))
+        self.assertFalse(is_personal_id("100701+-2342"))
+        self.assertFalse(is_personal_id("100701+A2342"))
+        self.assertFalse(is_personal_id("100701-+2342"))
+        self.assertFalse(is_personal_id("100701-A2342"))
+        self.assertFalse(is_personal_id("100701A+2342"))
+        self.assertFalse(is_personal_id("100701A-2342"))
