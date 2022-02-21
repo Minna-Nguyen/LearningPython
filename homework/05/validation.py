@@ -73,7 +73,16 @@ def is_email(email):
     regex = f"(^{regex_with_char})|(^{regex_only_name})$"
     return bool(re.search(regex, email))
 
+"""
+A module that will validate the personal id
+"""
 def is_personal_id(id):
+    """This function contains regex that will validate if given personal id is valid or not. 
+    Parameter
+    ---------
+        id: 'String'
+            The given string is in form of 'ppkkvvynnnt'. For example '031299-2219'
+    """
     pp = "^([1-2][0-9]|0[1-9]|3[0-1])"
     kk = "(1[0-2]|0[1-9])"
     vv = "([0-9][0-9])"
