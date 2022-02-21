@@ -1,5 +1,7 @@
 import unittest
-from util.validation import *
+from util.validation import is_email
+from util.validation import is_date
+from util.validation import is_personal_id
 
 class TestValidation(unittest.TestCase):
     def test_is_date(self):
