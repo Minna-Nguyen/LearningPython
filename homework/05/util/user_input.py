@@ -1,5 +1,3 @@
-from tokenize import Name
-from xmlrpc.client import Boolean
 from validation import *
 def is_name (name):
     name_regex = "[A-ZÖÄÅ][a-zäöå]+"
@@ -31,13 +29,7 @@ def ask_person():
         else:
             print("Name must be Firstname Lastname")
 
-    while True:
         print("Give email: ", end="")
-        email = is_email(input())
-        if email == True:
-            break
-        else:
-            print("Invalid email")
     
     while True:
         print("Give personal id: ", end="")
@@ -46,9 +38,8 @@ def ask_person():
             break
         else:
             print("Invalid personal id")
-    data = {'Email': email}
+    # data = {'Email': email}
    
-    return data
 print(ask_person())
 
 
