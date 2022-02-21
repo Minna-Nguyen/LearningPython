@@ -1,5 +1,5 @@
 import unittest
-from validation import *
+from util.validation import *
 
 class TestValidation(unittest.TestCase):
     def test_is_date(self):
