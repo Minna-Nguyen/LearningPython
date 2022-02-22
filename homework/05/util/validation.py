@@ -1,4 +1,3 @@
-from cgi import test
 import re
 """
 Module that validates the given date.
