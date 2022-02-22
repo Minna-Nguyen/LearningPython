@@ -1,4 +1,3 @@
-from util.user_input import ask_person
 from util.user_input import ask_int
 from util.user_input import ask
 from util.user_input import ask_person
