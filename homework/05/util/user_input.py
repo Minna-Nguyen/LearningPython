@@ -1,6 +1,7 @@
 from util.validation import is_date
 from util.validation import is_email
 from util.validation import is_personal_id
+import re
 """
 Module that contains name format related functions.
 """
@@ -197,6 +198,13 @@ def ask_person():
     id = ask_id(input("Give personal id: "))
     date = ask_date(input("Give start date of work: "))
 
+    # input_values = {"Name": ask_name,
+    #     "Email": ask_email,
+    #     "Personal id": ask_id,
+    #     "Start date at work": ask_date}
+
     data = {'Name': name, 'Email': email, 'Personal id': id, 'Date': date}
+    # for key in input_values:
+    #     print(f"{key}: {input_values[key]}")
+    
     return data
-   
