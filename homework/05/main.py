@@ -1,5 +1,7 @@
-from util.user_input import *
-from util.validation import *
+from util.user_input import ask_person
+from util.user_input import ask_int
+from util.user_input import ask
+from util.user_input import ask_person
 
 def main():
     menu = {1: "Add", 0: "Exit"}
