@@ -8,3 +8,5 @@ GET https://swapi.dev/api/planets
 
 GET http://info.cern.ch/hypertext/WWW/TheProject.html
 
+###
+GET http://127.0.0.1:5000/date
