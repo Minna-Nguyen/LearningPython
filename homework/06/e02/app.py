@@ -16,7 +16,7 @@ def myname():
 @app.route("/date")
 def date():
     x = datetime.datetime.now()
-    return f"{x}"
+    return f"<p>{x}</p>"
 
 # start the app if using python3 app.py
 if __name__ == "__main__":
