@@ -12,7 +12,7 @@ def generate_html_page(title, content):
         <title>{title}</title>
     </head>
     <body>
-        <p>{content}</p>
+        {content}
     </body>
     </html>"""
     return valid_page
