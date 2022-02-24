@@ -16,6 +16,3 @@ def generate_html_page(title, content):
     </body>
     </html>"""
     return valid_page
-
-html_page = generate_html_page("My title", "<p>Hello</p>")
-print(html_page)
