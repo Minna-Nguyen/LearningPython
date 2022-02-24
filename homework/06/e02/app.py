@@ -16,10 +16,9 @@ def myname():
 
 @app.route("/date")
 def date():
-    user_input = input()
-    y = generate_html_page(user_input, user_input)
-    x = datetime.datetime.now()
-    return f"<p>{y}</p>"
+    date = datetime.datetime.now()
+    html_page = generate_html_page("DATE", date)
+    return html_page
 
 # start the app if using python3 app.py
 if __name__ == "__main__":
