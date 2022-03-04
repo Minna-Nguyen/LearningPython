@@ -1,3 +1,4 @@
+from importlib import import_module
 def generate_html_page(title, content):
     """
     Function will return a valid html5 page as string.
@@ -10,9 +11,12 @@ def generate_html_page(title, content):
     <head>
         <meta charset="utf-8">
         <title>{title}</title>
+        <image href="{{url_for("static", filename="static/apple.png")}}
     </head>
     <body>
         {content}
+        <img src="static/apple.png">
+        
     </body>
     </html>"""
     return valid_page

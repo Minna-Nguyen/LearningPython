@@ -1,6 +1,7 @@
 from flask import Flask
 import datetime
 from htmlhelper import generate_html_page
+from random import randint
 # create Flask object, give module name
 # where to look for resources, like templates or static files
 app = Flask(__name__)
@@ -17,8 +18,15 @@ def myname():
 @app.route("/date")
 def date():
     date = datetime.datetime.now()
-    html_page = generate_html_page("DATE", date)
+    p_element = f"<p>{date}</p>"
+    # apple = f'{apple.png}'
+    html_page = generate_html_page("DATE", p_element)
     return html_page
+
+@app.route("/slot-machine")
+def slot_machine():
+# random 1 random2 random3
+    return f"Win!"
 
 # start the app if using python3 app.py
 if __name__ == "__main__":
