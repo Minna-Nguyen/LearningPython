@@ -13,3 +13,6 @@ GET http://127.0.0.1:5000/date
 
 ###
 GET http://127.0.0.1:5000/slot-machine
+
+###
+GET http://127.0.0.1:5000/bmi
