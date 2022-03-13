@@ -18,5 +18,3 @@ def is_name(name):
     name_regex = "[A-ZÖÄÅ][a-zäöå]{1,}"
     ok_regex = f"^({name_regex}) ({name_regex})$"
     return bool(re.search(ok_regex, name))
-
-print(is_name("Te Tee"))
