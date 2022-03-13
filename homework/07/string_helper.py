@@ -23,12 +23,3 @@ def csv_to_list(csv):
         split_again = word.split(",") 
         two_dim_list.append(split_again)
     return two_dim_list
-
-x = "1,etu,suku\n2,ekanimi,tokanimi"
-
-"""
-1,etu,suku
-2,ekanimi,tokanimi
-3,en,ymmärrä
-"""
-print(csv_to_list(x))
