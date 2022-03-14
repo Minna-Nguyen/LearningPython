@@ -16,5 +16,6 @@ def is_name(name):
     
     # contain at least two characters that are not digit
     name_regex = "[A-ZÖÄÅ][a-zäöå]{1,}"
-    ok_regex = f"^({name_regex}) ({name_regex})$"
-    return bool(re.search(ok_regex, name))
+    name_with_dashes_regex = "[A-ZÖÄÅ][a-zäöå]+\-[A-ZÖÄÅ][a-zäöå]+"
+    regex = f"^({name_regex}|{name_with_dashes_regex}) ({name_regex}|{name_with_dashes_regex})$"
+    return bool(re.search(regex, name))
