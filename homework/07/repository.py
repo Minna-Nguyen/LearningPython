@@ -32,8 +32,10 @@ def save_to_database(fname,lname):
     database = read_database()
     #lähettää ton tekstitiedoston tohon funktioon, joka jaottelee näitä osia
     two_dim_database = csv_to_list(database)
-    if is_name(f"{fname} {lname}") == True:
+    # if is_name(f"{fname} {lname}") == True:
     # avaa tiedoston ja lisää sitten nimen tiedostoon käyttäen 'append' tapaa
-        open_file = open("database.txt", "a")
-        open_file.write(f"{len(two_dim_database)},{fname},{lname}\n")
-        open_file.close()
+    open_file = open("database.txt", "a")
+    open_file.write(f"{len(two_dim_database)},{fname},{lname}\n")
+    open_file.close()
+
+# print(save_to_database("Test","Hii"))

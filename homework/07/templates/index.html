@@ -7,6 +7,10 @@
 </head>
 
 <body>
+    <ul>{% for name in names %}
+        <li>{{name}}</li>
+        {% endfor %}
+    </ul>
     <h1>Customer Database</h1>
     <h2>Give Input</h2>
     <form action="/" method="post">
