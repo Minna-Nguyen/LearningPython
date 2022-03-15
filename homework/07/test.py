@@ -40,6 +40,7 @@ class TestStringHelper(unittest.TestCase):
         self.assertFalse(is_name("ville"))
         self.assertFalse(is_name(" ville"))
         self.assertFalse(is_name(" Melissa"))
+        self.assertFalse(is_name("Melissa "))
         self.assertFalse(is_name("mille "))
         self.assertFalse(is_name(" Viii Mooi "))
         self.assertFalse(is_name(" Viii Mooi"))
