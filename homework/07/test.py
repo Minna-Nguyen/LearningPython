@@ -5,7 +5,9 @@ from string_helper import csv_to_list
 
 class TestStringHelper(unittest.TestCase):
     def test_is_name(self):
-        self.assertTrue(is_name("Ville Virtanen"))
+        self.assertTrue(is_name("Ville"))
+        self.assertTrue(is_name("Virtanen"))
+        self.assertTrue(is_name("Heli-Virtanen"))
         self.assertFalse(is_name("testi nimi"))
         self.assertFalse(is_name("testi Nimi"))
         self.assertFalse(is_name("Testi nimi"))
@@ -15,7 +17,6 @@ class TestStringHelper(unittest.TestCase):
 
         self.assertFalse(is_name("12Villa"))
         self.assertFalse(is_name("ville"))
-        self.assertFalse(is_name("Honney"))
         self.assertFalse(is_name(" ville"))
         self.assertFalse(is_name(" Melissa"))
         self.assertFalse(is_name("mille "))
@@ -27,7 +28,6 @@ class TestStringHelper(unittest.TestCase):
         self.assertFalse(is_name("?? Hello"))
         self.assertFalse(is_name("ville virtanen"))
         self.assertFalse(is_name("ville virtanen"))
-        self.assertTrue(is_name("Ville Virtanen"))
         self.assertFalse(is_name("123 virtanen"))
         self.assertFalse(is_name("ville 12!dew"))
         self.assertFalse(is_name("123 virtanen"))
@@ -35,12 +35,9 @@ class TestStringHelper(unittest.TestCase):
         self.assertFalse(is_name("VilleVirtanen"))
         self.assertFalse(is_name("12Villa"))
         self.assertFalse(is_name("ville"))
-        self.assertFalse(is_name("Honney"))
-        
         
         self.assertFalse(is_name("12Villa"))
         self.assertFalse(is_name("ville"))
-        self.assertFalse(is_name("Honney"))
         self.assertFalse(is_name(" ville"))
         self.assertFalse(is_name(" Melissa"))
         self.assertFalse(is_name("mille "))
@@ -54,10 +51,7 @@ class TestStringHelper(unittest.TestCase):
         self.assertFalse(is_name(" Viii Mooi"))
         self.assertFalse(is_name("Viii Mooi "))
 
-        self.assertTrue(is_name("Ville-Bille Mobil"))
-        self.assertTrue(is_name("Ville-Bille Mobil"))
         self.assertFalse(is_name("ville-balle mobil-lenn"))
-        self.assertTrue(is_name("Ville-Bille Mobil-Alaa"))
         self.assertFalse(is_name("ville-Bille Mobil-alaa"))
         self.assertFalse(is_name("Ville-bille Mobil-alaa"))
         self.assertFalse(is_name("Ville-bille Mobil hels"))
