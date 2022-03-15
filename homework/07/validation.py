@@ -3,7 +3,7 @@ import re
 Module that contains name format related functions.
 """
 def is_name(name):
-    """ Checks if the given name is in name format and if the given name is case sensitive or not.
+    """ Checks if the given name is in name format.
     Parameters
     ----------
     name: 'String'
@@ -17,5 +17,5 @@ def is_name(name):
     # contain at least two characters that are not digit
     name_regex = "[A-ZÖÄÅ][a-zäöå]{1,}"
     name_with_dashes_regex = "[A-ZÖÄÅ][a-zäöå]+\-[A-ZÖÄÅ][a-zäöå]+"
-    regex = f"^({name_regex}|{name_with_dashes_regex}) ({name_regex}|{name_with_dashes_regex})$"
+    regex = f"^({name_regex}|{name_with_dashes_regex})$"
     return bool(re.search(regex, name))
