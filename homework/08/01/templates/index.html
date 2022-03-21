@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slot Machine</title>
+    <style>
+        body {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            margin-left: 1em;
+        }
+        a {
+            padding: 1em;
+            background-color: salmon;
+            color: black;
+            font-weight: bold;
+            border: 1px solid black;
+        }
+        a:hover {
+            background-color: rgb(253, 225, 188);
+        }
+
+</style>
+
+</head>
+<body>
+    <h1>Slot Machine</h1>
+    <p>Welcome! Hit Play to start!</p>
+    <p>Every round costs you 1 €. If you win, you get 5 €!</p>
+    {% if money == "0" %}
+    <a href="http://127.0.0.1:5000/slot_machine">Play again!</a>
+    {% else %}
+    <a href="http://127.0.0.1:5000/slot_machine">Play!</a>
+    {% endif %}
+    
+    {% for value in lista %}
+    <img src="static/{{value}}.jpg" width="256" height="256">
+    {% endfor %}
+    <br>    
+    <!--check if three images are the same-->
+    {% if lista[0] == lista[1] == lista[2]%}
+    <br>
+    <p>{{win}}</p>
+    <p>Money is ... {{money}} €</p>
+    {% else %}
+    <br>
+    <p>{{lose}}</p>
+    <p>Money is ... {{money}} €</p>
+    {% endif %}
+
+
+</body>
+</html>
