@@ -1,8 +1,6 @@
 from flask import Flask, make_response, request, render_template
 import random
 
-# kaikki minnan työtä :))))
-
 app = Flask(__name__)
 
 
