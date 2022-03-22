@@ -41,7 +41,8 @@ def slot_machine():
         money = 20
     elif money == "1":
         response = make_response(render_template('index.html', lista=random_img, win=win, lose=lose, money="0")) #asettaa sinne html puolelle rahaksi 0€, mutta poistaa ton cookien 1 kohdalla
-        response.set_cookie("money", "", expires=0)
+        response.delete_cookie("money")
+        # response.set_cookie("money", "", expires=0)
 
         return response
 
