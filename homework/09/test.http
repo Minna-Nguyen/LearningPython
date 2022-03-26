@@ -1,0 +1,25 @@
+# get all of the blogs
+get http://localhost:5000/blogs
+
+###
+# get certain blog
+get http://localhost:5000/blogs/2
+
+###
+#update certain blog
+get http://localhost:5000/blogs/update/1
+
+###
+# add  new blog post
+post http://localhost:5000/blogs
+content-type: application/json
+
+{"title": "tommorrow", "body":"what day is today"}
+
+###
+# delete certain blog post
+delete http://localhost:5000/blogs/5
+
+###
+# delete all blog posts
+delete http://localhost:5000/blogs/delete_all
