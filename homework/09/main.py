@@ -18,12 +18,19 @@ def get_blogs():
 def add_blog():
     blog = json.loads(request.data)
     # https://www.programiz.com/python-programming/global-keyword
+    # global id
+    # id = id + 1
+    # blog["id"] = id
+    # blogs.append(blog)
+
     global id
     id = id + 1
     blog["id"] = id
     blogs.append(blog)
     return make_response(jsonify(blog), 201)
 
+
+# tarkista tietty blogi
 @app.route('/blogs/<int:id>', methods=['GET'])
 def get_certain_blog(id):
     for i in range(0, len(blogs)):
@@ -31,7 +38,16 @@ def get_certain_blog(id):
             result = jsonify(blogs[i])
             return result
 
+#päivitä tietty blogi
+@app.route('/blogs/update/<int:update_id>', methods=['GET'])
+def update_certain_blog(update_id):
+    for i in range(0, len(blogs)):
+        # go through all the elements, take certain blog by 'id' and update
+        if  blogs[i]["id"] == update_id:
+            blogs[i].update({"title":"Mayday", "body":"Mayday is when..."})
+            return jsonify(blogs[i])
 
+# poista tietty blogi
 @app.route('/blogs/<int:the_id>', methods=['DELETE'])
 def delete_id(the_id):
     index_to_be_deleted = -1
@@ -44,6 +60,7 @@ def delete_id(the_id):
     else:
         return make_response("", 404)
 
+# poista kaikki blogit
 @app.route('/blogs/delete_all', methods=['DELETE'])
 def delete_blog():
     for i in range(0, len(blogs)):
