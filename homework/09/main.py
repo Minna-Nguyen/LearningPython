@@ -48,7 +48,7 @@ def update_certain_blog(update_id):
             return jsonify(blogs[i])
 
 # poista tietty blogi
-@app.route('/blogs/<int:the_id>', methods=['DELETE'])
+@app.route('/blogs/delete/<int:the_id>', methods=['DELETE'])
 def delete_id(the_id):
     index_to_be_deleted = -1
     for i in range(0, len(blogs)):

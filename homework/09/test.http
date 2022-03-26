@@ -18,7 +18,7 @@ content-type: application/json
 
 ###
 # delete certain blog post
-delete http://localhost:5000/blogs/5
+delete http://localhost:5000/blogs/delete/2
 
 ###
 # delete all blog posts
