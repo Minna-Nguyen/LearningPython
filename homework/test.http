@@ -1,0 +1,20 @@
+# get all of the blogs
+get http://localhost:5000/blogs
+
+###
+
+get http://localhost:5000/blogs/2
+
+###
+
+post http://localhost:5000/blogs
+content-type: application/json
+
+{"title": "tommorrow"}
+
+###
+
+delete http://localhost:5000/blogs/2
+
+###
+delete http://localhost:5000/blogs/delete_all
