@@ -14,7 +14,7 @@ def get_blogs():
     return jsonify(blogs)
 
 # lisää uusi blogi 
-@app.route('/blogs', methods=['POST'])
+@app.route('/blogs/add-new', methods=['POST'])
 def add_blog():
     blog = json.loads(request.data)
     # https://www.programiz.com/python-programming/global-keyword
