@@ -1,0 +1,10 @@
+laptop
+kotlin
+software
+developer
+compiler
+server
+proxy
+framework
+keyboards
+desktop
