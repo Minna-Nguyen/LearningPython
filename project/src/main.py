@@ -15,14 +15,24 @@ def read_database():
     f = open("words.txt", "r")
     return f.read()
 
-
+"""
+A module that validates the player input.
+"""
 def validate_player_input(is_letter):
-
-     while True:
+    """Function will go check if the player input is just one letter. It will ask the player a new input again if the input wasn't one in length or a string type.
+    Parameter
+    ---------
+    is_letter: 'String'
+        User input that is a string type. This will be validated if it is just one letter or not.
+    Return
+    ------
+    value: 'String'
+        Returns a validated string that is a one letter. 
+    """
+    while True:
             valid_input = "^[a-z]{1}$"
             regex = bool(re.search(valid_input, is_letter))
             if regex:
-                # break
                 return is_letter
             else:
                 is_letter = input("Your guess cannot be longer than one letter or a non-alphabetic character: ")
@@ -59,28 +69,6 @@ def hangman_game():
         player_input = input("Your guess: ")
         print(validate_player_input(player_input))
 
-        # validating the input
-        # while True:
-        #     valid_input = "^[a-z]{1}$"
-        #     regex = bool(re.search(valid_input, player_input))
-        #     if regex:
-        #         break
-        #     else:
-        #         player_input = input("Your guess cannot be longer than one letter or a non-alphabetic character: ")
-
-            # else:
-                
-
-
-            # if len(player_input) != 1:
-            #     player_input = input("You must enter one letter: ")
-            # elif type(player_input) != str():
-            #     player_input = input("Your guess must be a letter: ")
-            # # elif isinstance(player_input, str):
-            #     print("Please give a letter.")
-            #     break
-            # else:
-            #     break
         guesses += player_input
 
         print()
@@ -102,28 +90,6 @@ def hangman_game():
         # board
         print(secret_word)
 
-        # emt data??
         # print("False: ", false_guesses)
 
 hangman_game()
-
-
-
-# x = "123"
-# y = "1"
-# z =" aöldfkjasöldfjkasldökf"
-# i = "o"
-# valid = "^[a-z]{1}$"
-
-# while True:
-#     regex = bool(re.search(valid, i))
-#     print("Hello?")
-#     if regex:
-#         print("toimiiko")
-#         break
-# print(regex)
-    
-
-# print(bool(re.search(valid, x)))
-# print(bool(re.search(valid, y)))
-# print(bool(re.search(valid, z)))
