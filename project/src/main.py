@@ -30,7 +30,7 @@ def validate_player_input(is_letter):
         Returns a validated string that is a one letter. 
     """
     while True:
-            valid_input = "^[a-z]{1}$"
+            valid_input = "^[a-zA-Z]{1}$"
             regex = bool(re.search(valid_input, is_letter))
             if regex:
                 return is_letter
@@ -42,7 +42,56 @@ def validate_player_input(is_letter):
 Module that contains function required for the hangman game.
 """
 def hangman_game():
-
+    hangman_ascii = ['''
+  +---+
+  |   |
+      |
+      |
+      |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+      |
+      |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+  |   |
+      |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+ /|   |
+      |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+ /|\  |
+      |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+ /|\  |
+ /    |
+      |
+=========''', '''
+  +---+
+  |   |
+  O<  |
+ /|\  |
+ / \  |
+      |
+=========''']
     # Open and read the text file.
     words = read_database()
     # split the text file into substrings by enter (\n). The split() funtion will create a list where the element is the words.
@@ -54,42 +103,59 @@ def hangman_game():
 
     random_word = random.randint(0, len(words)-1)
 
-    keep_gessing = True
-    guesses = ""
-    false_guesses = ""
 
-    dashes = "_" * len(words[0])
-    print(dashes)
+    keep_gessing = True
+    
+    guesses = set()
+    secret_word = list()
+    incorrect_guesses = set()
+
+    for i in range(0, len(words[random_word])):
+        secret_word.append("_")
+    #display the hangman starting graph
+    print(hangman_ascii[0])
+    # display the dashes
+    print("".join(secret_word), end="\n\n")
    
     while keep_gessing:
-        secret_word = ""
-        # Checker keeps count on the length of the secret word. 
-        checker = 0
-
         player_input = input("Your guess: ")
-        print(validate_player_input(player_input))
-
-        guesses += player_input
-
+        validate_player_input(player_input)
+        
         print()
-        # go through what letters the word contains
-        for letter in words[0]:
-            checker += 1
-            # checking guesses of the player
-            for guess_letter in guesses:
-                if guess_letter == letter:
-                    secret_word += letter
-                    break
-            
-            if len(secret_word) != checker:
-                secret_word += "_"
-        # if the player was able to guess the word correctly, game end
-        if secret_word == words[0]:
-            keep_gessing = False
-    
-        # board
-        print(secret_word)
+        # ["m","m","m","m","m"]
+        # ["0","1","2","3","4"]
+        if player_input in words[random_word]:
+            for index in range(0, len(words[random_word])):
+                if player_input == words[random_word][index]:
+                    secret_word[index] = player_input
+        else:
+            incorrect_guesses.add(player_input)
+        # display secret word so far
+        print("".join(secret_word))
 
-        # print("False: ", false_guesses)
+        # display the hangman steps when there is a wrong answer from the player
+        if len(incorrect_guesses) == 1:
+            print(hangman_ascii[1])
+        elif len(incorrect_guesses) == 2:
+            print(hangman_ascii[2])
+        elif len(incorrect_guesses) == 3:
+            print(hangman_ascii[3])
+        elif len(incorrect_guesses) == 4:
+            print(hangman_ascii[4]) 
+        elif len(incorrect_guesses) == 5:
+            print(hangman_ascii[5])
+        elif len(incorrect_guesses) == 6:
+            print(hangman_ascii[6])
+            print("You lost!")
+            keep_gessing = False
+        
+        
+        # if the player was able to guess the word correctly, game end
+        if "".join(secret_word) == words[random_word]:
+            keep_gessing = False
+            print("WINNIIIING!")
+        # display only when there is some element in the set()
+        if len(incorrect_guesses) != 0:
+            print("Misses: ", incorrect_guesses)
 
 hangman_game()
