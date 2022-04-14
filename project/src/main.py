@@ -148,7 +148,9 @@ def hangman_game():
                 print("Misses: ", incorrect_guesses)
         else:
             print("Your guess cannot be longer than one letter or a non-alphabetic character: ")
-
+"""
+A module where the main code is happening.
+"""
 def main():
     print("Welcome to hangman game!\nWhat is your name?\n")
     while True:
