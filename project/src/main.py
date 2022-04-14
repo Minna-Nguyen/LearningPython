@@ -1,6 +1,7 @@
 import random
 import time
 from ui import validate_player_input
+from ui import ask_name
 """
 Module contains a function that will read a txt file.
 """
@@ -89,13 +90,7 @@ def hangman_game():
     words = read_database()
     # split the text file into substrings by enter (\n). The split() funtion will create a list where the element is the words.
     words = words.split("\n")
-    # print(f'This is the whole list:\n {words}')
-    # print(f'And this the third word: {words[2]}')
-
-    # print("------")
-
     random_word = random.randint(0, len(words)-1)
-
 
     keep_gessing = True
     
@@ -153,10 +148,19 @@ def hangman_game():
                 print("Misses: ", incorrect_guesses)
         else:
             print("Your guess cannot be longer than one letter or a non-alphabetic character: ")
-            validate_player_input(player_input)
 
-starting_time = int(time.time())
-hangman_game()
-print(int(time.time()) - starting_time, "seconds")
+def main():
+    print("Welcome to hangman game!\nWhat is your name?\n")
+    while True:
+        player_name = input()
+        check_name = ask_name(player_name)
+        if check_name:
+            starting_time = int(time.time())
+            hangman_game()
+            print(int(time.time()) - starting_time, "seconds")
+            break
+        else:
+            print("Your name must start with a capital letter and be at least two letters long.")
 
 # add_to_database()
+main()
