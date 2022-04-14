@@ -1,10 +1,14 @@
-# Project Title
+# Hangman game
 
 A little info about your project and/ or overview that explains what the project is about.
 
+
+This small project is about this game called hangman. Just like any hangman game, there will be a secret word that the player has to guess. The player will guess the word by inputting letters. If the player guesses the letter right, the empty line will be replaced with the player's letter. If the player guesses the letter wrong, there will be a hangman drawn. If the whole hangman is drawn, the game will end and the player loses the game. 
+
+This is a simple game that is played on the terminal console. Since there is no frontend and backend, there won't be any RESTful API implemented. 
 # Author
 
-Firstname Lastname
+Minna Nguyen
 
 # Screenshots
 
@@ -13,6 +17,7 @@ Firstname Lastname
 # Tech/framework used
 
 What language is used, what external modules are used (if any).
+This project is written using Python and HTML. 
 
 # Installation
 
