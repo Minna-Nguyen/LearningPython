@@ -1,6 +1,6 @@
 import random
-import re
-
+import time
+from ui import validate_player_input
 """
 Module contains a function that will read a txt file.
 """
@@ -16,27 +16,20 @@ def read_database():
     return f.read()
 
 """
-A module that validates the player input.
+Module that will save the given firstname lastname to the file called  'words.txt'
 """
-def validate_player_input(is_letter):
-    """Function will go check if the player input is just one letter. It will ask the player a new input again if the input wasn't one in length or a string type.
-    Parameter
-    ---------
-    is_letter: 'String'
-        User input that is a string type. This will be validated if it is just one letter or not.
-    Return
-    ------
-    value: 'String'
-        Returns a validated string that is a one letter. 
+def add_to_database():
+    """This function validates if the given string is in name format. It will then save the valid name to the words.txt
     """
-    while True:
-            valid_input = "^[a-zA-Z]{1}$"
-            regex = bool(re.search(valid_input, is_letter))
-            if regex:
-                return is_letter
-            else:
-                is_letter = input("Your guess cannot be longer than one letter or a non-alphabetic character: ")
-
+    #avaa ton filen
+    database = read_database()
+    #lähettää ton tekstitiedoston tohon funktioon, joka jaottelee näitä osia
+    # two_dim_database = csv_to_list(database)
+    # avaa tiedoston ja lisää sitten nimen tiedostoon käyttäen 'append' tapaa
+    open_file = open("words.txt", "a")
+    test = input("What word do you wish to add?: ")
+    open_file.write(f'{test}\n')
+    open_file.close()
 
 """
 Module that contains function required for the hangman game.
@@ -106,7 +99,6 @@ def hangman_game():
 
     keep_gessing = True
     
-    guesses = set()
     secret_word = list()
     incorrect_guesses = set()
 
@@ -119,43 +111,52 @@ def hangman_game():
    
     while keep_gessing:
         player_input = input("Your guess: ")
-        validate_player_input(player_input)
+        letter_ok = validate_player_input(player_input)
         
-        print()
-        # ["m","m","m","m","m"]
-        # ["0","1","2","3","4"]
-        if player_input in words[random_word]:
-            for index in range(0, len(words[random_word])):
-                if player_input == words[random_word][index]:
-                    secret_word[index] = player_input
+        if letter_ok == True:
+            print()
+            # ["m","m","m","m","m"]
+            # ["0","1","2","3","4"]
+            if player_input in words[random_word]:
+                for index in range(0, len(words[random_word])):
+                    if player_input == words[random_word][index]:
+                        secret_word[index] = player_input
+            else:
+                incorrect_guesses.add(player_input)
+            # display secret word so far
+            print("".join(secret_word))
+
+            # display the hangman steps when there is a wrong answer from the player
+            if len(incorrect_guesses) == 1:
+                print(hangman_ascii[1])
+            elif len(incorrect_guesses) == 2:
+                print(hangman_ascii[2])
+            elif len(incorrect_guesses) == 3:
+                print(hangman_ascii[3])
+            elif len(incorrect_guesses) == 4:
+                print(hangman_ascii[4]) 
+            elif len(incorrect_guesses) == 5:
+                print(hangman_ascii[5])
+            elif len(incorrect_guesses) == 6:
+                print(hangman_ascii[6])
+                print("You lost!")
+                keep_gessing = False
+            
+            
+            # if the player was able to guess the word correctly, game end
+            if "".join(secret_word) == words[random_word]:
+                keep_gessing = False
+                print("WINNIIIING!")
+
+            # display 'incorrect_guesses set()' only when there is some element in the set()
+            if len(incorrect_guesses) != 0:
+                print("Misses: ", incorrect_guesses)
         else:
-            incorrect_guesses.add(player_input)
-        # display secret word so far
-        print("".join(secret_word))
+            print("Your guess cannot be longer than one letter or a non-alphabetic character: ")
+            validate_player_input(player_input)
 
-        # display the hangman steps when there is a wrong answer from the player
-        if len(incorrect_guesses) == 1:
-            print(hangman_ascii[1])
-        elif len(incorrect_guesses) == 2:
-            print(hangman_ascii[2])
-        elif len(incorrect_guesses) == 3:
-            print(hangman_ascii[3])
-        elif len(incorrect_guesses) == 4:
-            print(hangman_ascii[4]) 
-        elif len(incorrect_guesses) == 5:
-            print(hangman_ascii[5])
-        elif len(incorrect_guesses) == 6:
-            print(hangman_ascii[6])
-            print("You lost!")
-            keep_gessing = False
-        
-        
-        # if the player was able to guess the word correctly, game end
-        if "".join(secret_word) == words[random_word]:
-            keep_gessing = False
-            print("WINNIIIING!")
-        # display only when there is some element in the set()
-        if len(incorrect_guesses) != 0:
-            print("Misses: ", incorrect_guesses)
-
+starting_time = int(time.time())
 hangman_game()
+print(int(time.time()) - starting_time, "seconds")
+
+# add_to_database()
