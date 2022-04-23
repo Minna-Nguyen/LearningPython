@@ -229,36 +229,39 @@ def main():
     check = "Check highscore"
     quit_game = "End game"
     choices = [play, check, quit_game]
-
+    game_on = True
     print("Welcome to hangman game!\n")
+
+
     i = 0
-    for choice in choices:
-        i+=1
-        print(f'{i}: {choice}')
-    user_input = int(input("\nWhat do you want to do?\n"))
-   
-    if user_input != -1:
-        # if choice is PLAY, ask player name and start the game
-        if choices[user_input-1] == play:
-            while True:
-                player_name = input("What is your name?\n")
-                check_name = ask_name(player_name)
-                if check_name:
-                    break
-                else:
-                    print("Your name must start with a capital letter and be at least two letters long.")
-               
-            starting_time = int(time.time())
-            file = f"{hangman_game()}.txt"
-            highscore = int(time.time()) - starting_time
-            save_highscore_files(player_name, highscore, file)
-            print(highscore, "seconds")
-        
-        elif choices[user_input-1] == check:
-            print("\nRetrieving highscores\n")
-            read_highscore()
+    while game_on:
+        for choice in choices:
+            i+=1
+            print(f'{i}: {choice}')
+        user_input = int(input("\nWhat do you want to do?\n"))
+    
+        if user_input != -1:
+            # if choice is PLAY, ask player name and start the game
+            if choices[user_input-1] == play:
+                while True:
+                    player_name = input("What is your name?\n")
+                    check_name = ask_name(player_name)
+                    if check_name:
+                        break
+                    else:
+                        print("Your name must start with a capital letter and be at least two letters long.")
+                
+                starting_time = int(time.time())
+                file = f"{hangman_game()}.txt"
+                highscore = int(time.time()) - starting_time
+                save_highscore_files(player_name, highscore, file)
+                print(highscore, "seconds")
+            
+            elif choices[user_input-1] == check:
+                print("\nRetrieving highscores\n")
+                read_highscore()
 
-        elif choices[user_input-1] == quit_game:
-            print("Thanks for playing!")
-
+            elif choices[user_input-1] == quit_game:
+                print("Thanks for playing!")
+                break
 main()
