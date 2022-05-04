@@ -54,22 +54,32 @@ def read_secret_word_database():
     f = open("words.txt", "r")
     return f.read()
 
-# """
-# Module that will save the given firstname lastname to the file called  'words.txt'
-# """
-# def add_to_database():
-#     """This function validates if the given string is in name format. It will then save the valid name to the words.txt
-#     """
-#     #avaa ton filen
-#     database = read_secret_word_database()
-#     #lähettää ton tekstitiedoston tohon funktioon, joka jaottelee näitä osia
-#     # two_dim_database = csv_to_list(database)
-#     # avaa tiedoston ja lisää sitten nimen tiedostoon käyttäen 'append' tapaa
-#     open_file = open("words.txt", "a")
-#     test = input("What word do you wish to add?: ")
-#     open_file.write(f'{test}\n')
-#     open_file.close()
-
+"""
+Module that will add new word from the administrator to the file called  'words.txt'
+"""
+def add_to_database():
+    """This function validates the word given from administrator. If it's a valid input, then add to the words.txt
+    """
+    database = read_secret_word_database()
+    print(f"\nThis is the whole word list:\n{database}")
+    secret_word_list = []
+    for j in database.split("\n"):
+        secret_word_list.append(j)
+    print(secret_word_list)
+    word_ok = "^[a-z]{2,}$"
+    while True:
+        new_word = input("The word you wish to add: ")
+        if bool(re.search(word_ok, new_word)):
+            open_file = open("words.txt", "a")
+            open_file.write(f'{new_word}\n')
+            open_file.close()
+            break
+        else:
+            print("Your given word cannot contain anything else but alphabets. Word must be at least 2 letters long. Do not use capitalized words.")
+    # create new .txt file from the new given word
+    new = open(f'{new_word}.txt', 'a')    
+    new.close()
+            
 """
 Module that will create a new text file and save player's highscore of the words. 
 """
@@ -257,43 +267,53 @@ def hangman_game():
 A module where the main code is happening.
 """
 def main():
+    edit = "Edit secret word database"
     play = "Play"
     check = "Check highscore"
     quit_game = "End game"
-    choices = [play, check, quit_game]
+    choices = ["0", "1", "2", "3"]
     game_on = True
     print("Welcome to hangman game!")
 
 
     while game_on:
-        print("\n1: Play")
-        print("2: Check highscore")
-        print("3: End game")
+        print("\n1: ", play)
+        print("2: ", check)
+        print("3: ", edit)
+        print("0: ", quit_game)
 
-        user_input = int(input("\nWhat do you want to do?\n"))
-    
-        if user_input != -1:
-            # if choice is PLAY, ask player name and start the game
-            if choices[user_input-1] == play:
-                while True:
-                    player_name = input("What is your name?\n")
-                    check_name = ask_name(player_name)
-                    if check_name:
-                        break
-                    else:
-                        print("Your name must start with a capital letter and be at least two letters long.")
+        player_input = int(input("\nWhat do you want to do?\n"))
+        try:
+            if player_input != -1:
+                # if choice is PLAY, ask player name and start the game
+                if choices[player_input] == "1":
+                    while True:
+                        player_name = input("What is your name?\n")
+                        check_name = ask_name(player_name)
+                        if check_name:
+                            break
+                        else:
+                            print("Your name must start with a capital letter and be at least two letters long.")
+                    
+                    starting_time = int(time.time())
+                    file = f"{hangman_game()}.txt"
+                    highscore = int(time.time()) - starting_time
+                    save_highscore_files(player_name, highscore, file)
+                    print(highscore, "seconds\n")
                 
-                starting_time = int(time.time())
-                file = f"{hangman_game()}.txt"
-                highscore = int(time.time()) - starting_time
-                save_highscore_files(player_name, highscore, file)
-                print(highscore, "seconds\n")
-            
-            elif choices[user_input-1] == check:
-                print("\nRetrieving highscores\n")
-                read_highscore()
+                elif choices[player_input] == "2":
+                    print("\nRetrieving highscores\n")
+                    read_highscore()
 
-            elif choices[user_input-1] == quit_game:
-                print("Thanks for playing!")
-                break
+                elif choices[player_input] == "3":
+                    player_input = int(input("\nIf you want to remove a word, give 1. If you want to add new words to database, give 2: \n"))
+                    if player_input == 1:
+                        print("removing...")
+                    elif player_input == 2:
+                        add_to_database()
+                elif choices[player_input] == "0":
+                    print("Thanks for playing!")
+                    break
+        except:
+            print("Your chosen option is not on the list.")
 main()
