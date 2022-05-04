@@ -2,8 +2,44 @@ import os
 from operator import itemgetter
 import random
 import time
-from ui import validate_player_input
-from ui import ask_name
+import re
+"""
+A module that validates the player input.
+"""
+def validate_player_input(is_letter):
+    """Function will go check if the player input is just one letter.
+    Parameter
+    ---------
+    is_letter: 'String'
+        User input that is a string type. This will be validated if it is just one letter or not.
+    Return
+    ------
+    value: 'bool'
+        Returns True if valid string, else False. 
+    """
+    valid_input = "^[a-zA-Z]{1}$"
+    regex = bool(re.search(valid_input, is_letter))
+    return regex
+
+"""
+A module that ask the player name. It also validates the given name and returns a valid name.
+"""
+def ask_name(name):
+    """Function will validate player name input and returns the valid name
+    Parameter
+    ---------
+    name: 'String'
+        This string will be validated.
+    Return
+    ------
+    value: 'String'
+        Retruns the validated name string.
+    """
+    # name starts with a capital letter, and name length is at least 2 letters long
+    valid_input = "^[A-Z][a-z]{1,}$"
+    regex = bool(re.search(valid_input, name))
+    return regex
+
 """
 Module contains a function that will read a txt file.
 """
@@ -48,13 +84,8 @@ def save_highscore_files(name, high, file):
     file: 'String'
         File variable contains the 'file'.txt path.
     """
-    # open_file = open(file, "r")
-    # read = open_file.read()
     some_file = open(f"{file}", "a")
-    some_file.write("\n")
-    some_file.write(name)
-    some_file.write(", ")
-    some_file.write(str(high))
+    some_file.write(f'{name}, {high}\n')
 
 """
 Module that will read all highscores and will display 
@@ -65,7 +96,8 @@ def read_highscore():
     for file in os.listdir("..\src"):
         if file.endswith(".txt") and not file.endswith("words.txt"):
             f = open(file, "r")
-            read = f.read()
+            #strip() will ignore the empty line
+            read = f.read().strip("\n")
             f.close()
             print(f'word: "{file[0:-4]}"') 
             # [[word], [number]], outer [] is two_dim_db
@@ -209,7 +241,7 @@ def hangman_game():
             print(hangman_ascii[5])
         elif len(incorrect_guesses) == 6:
             print(hangman_ascii[6])
-            print("You lost!")
+            print("You lost!\n")
             keep_gessing = False
         
         # if the player was able to guess the word correctly, game end
@@ -230,14 +262,14 @@ def main():
     quit_game = "End game"
     choices = [play, check, quit_game]
     game_on = True
-    print("Welcome to hangman game!\n")
+    print("Welcome to hangman game!")
 
 
-    i = 0
     while game_on:
-        for choice in choices:
-            i+=1
-            print(f'{i}: {choice}')
+        print("\n1: Play")
+        print("2: Check highscore")
+        print("3: End game")
+
         user_input = int(input("\nWhat do you want to do?\n"))
     
         if user_input != -1:
@@ -255,7 +287,7 @@ def main():
                 file = f"{hangman_game()}.txt"
                 highscore = int(time.time()) - starting_time
                 save_highscore_files(player_name, highscore, file)
-                print(highscore, "seconds")
+                print(highscore, "seconds\n")
             
             elif choices[user_input-1] == check:
                 print("\nRetrieving highscores\n")
