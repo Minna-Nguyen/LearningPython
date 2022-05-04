@@ -1,4 +1,3 @@
-from itertools import count
 import os
 from operator import itemgetter
 import random
@@ -66,7 +65,6 @@ def add_to_database():
     secret_word_list = []
     for j in database.split("\n"):
         secret_word_list.append(j)
-    print(secret_word_list)
     word_ok = "^[a-z]{2,}$"
     while True:
         new_word = input("The word you wish to add: ")
@@ -80,6 +78,29 @@ def add_to_database():
     # create new .txt file from the new given word
     new = open(f'{new_word}.txt', 'a')    
     new.close()
+"""
+Module that will remove a word from the administrator to the file called  'words.txt'
+"""
+def remove_form_database():
+    """This function validates the word given from administrator. If it's a valid input, then remove it form the words.txt
+    """
+    database = read_secret_word_database()
+    print(f"\nThis is the whole word list:\n{database}")
+    secret_word_list = []
+    for j in database.split("\n"):
+        secret_word_list.append(j)
+    # remove() will remove input (str) from the secret_word_list!
+    remove_word = input("The word you wish to remove: ")
+    secret_word_list.remove(remove_word)
+    # open the file first, then delete the word and save to the words.txt file
+    f = open("words.txt", "w")
+    # check if the secret_word_list contains any '' element
+    for word in secret_word_list:
+        if word == "":
+            secret_word_list.remove("")
+        else:
+            f.write(f'{word}\n')
+    f.close()
             
 """
 Module that will create a new text file and save player's highscore of the words. 
@@ -230,11 +251,14 @@ def hangman_game():
       |
 =========''']
     # Open and read the text file.
-    words = read_secret_word_database()
+    words = read_secret_word_database().strip("\n")
+    # test = []
+    # for j in words.split("\n"):
+    #     test.append(j)
+    # print(test)
     # split the text file into substrings by enter (\n). The split() funtion will create a list where the element is the words.
     words = words.split("\n")
     random_word = random.randint(0, len(words)-1)
-
     keep_gessing = True
     secret_word = list()
     incorrect_guesses = set()
@@ -313,7 +337,6 @@ def main():
         player_input = int(input("\nWhat do you want to do?\n"))
         try:
             if player_input != -1:
-                # if choice is PLAY, ask player name and start the game
                 if player_input == 1:
                     while True:
                         player_name = input("What is your name?\n")
@@ -338,9 +361,21 @@ def main():
                     if access_ok:
                         player_input = int(input("\nIf you want to remove a word, give 1. If you want to add new words to database, give 2: \n"))
                         if player_input == 1:
-                            print("removing...")
+                            remove_form_database()
+                            while True:
+                                answer =input("Do you want to remove more word? y/n: ")
+                                if answer == "y":
+                                    remove_form_database()
+                                elif answer == "n":
+                                    break
                         elif player_input == 2:
                             add_to_database()
+                            while True:
+                                answer =input("Do you want to add more word? y/n: ")
+                                if answer == "y":
+                                    add_to_database()
+                                elif answer == "n":
+                                    break
                 
                 elif player_input == 0:
                     print("Thanks for playing!")
