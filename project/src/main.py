@@ -1,3 +1,4 @@
+from itertools import count
 import os
 from operator import itemgetter
 import random
@@ -141,6 +142,34 @@ def read_highscore():
             print()
 
 """
+Module that contains function for log in.
+"""
+def log_in():
+    """Function validates the player. If the credentials (admin/admin) are correct, welcome the administrator.
+    Return
+    ------
+    value: 'bool'
+        If the log in is correct then return True, else return False.
+    """
+    print("\nYou need to log in to use this feature.\n")
+    count = 0
+    while True:
+            username = input("Give username: ")
+            password = input("Give password: ")
+            print()
+            #log in tries, if tries sum to 3 -> access denied
+            count+=1
+            if count >= 3:
+                print("You have tried too many times. Access denied!")
+                return False
+            elif count == 1 or count == 2:
+                print("Wrong username or password")
+
+            if username == "admin" and password == "admin":
+                print("Welcome admin!")
+                return True
+            
+"""
 Module that contains function required for the hangman game.
 """
 def hangman_game():
@@ -271,9 +300,8 @@ def main():
     play = "Play"
     check = "Check highscore"
     quit_game = "End game"
-    choices = ["0", "1", "2", "3"]
     game_on = True
-    print("Welcome to hangman game!")
+    print("\nWelcome to hangman game!")
 
 
     while game_on:
@@ -286,7 +314,7 @@ def main():
         try:
             if player_input != -1:
                 # if choice is PLAY, ask player name and start the game
-                if choices[player_input] == "1":
+                if player_input == 1:
                     while True:
                         player_name = input("What is your name?\n")
                         check_name = ask_name(player_name)
@@ -301,17 +329,20 @@ def main():
                     save_highscore_files(player_name, highscore, file)
                     print(highscore, "seconds\n")
                 
-                elif choices[player_input] == "2":
+                elif player_input == 2:
                     print("\nRetrieving highscores\n")
                     read_highscore()
 
-                elif choices[player_input] == "3":
-                    player_input = int(input("\nIf you want to remove a word, give 1. If you want to add new words to database, give 2: \n"))
-                    if player_input == 1:
-                        print("removing...")
-                    elif player_input == 2:
-                        add_to_database()
-                elif choices[player_input] == "0":
+                elif player_input == 3:
+                    access_ok = log_in()
+                    if access_ok:
+                        player_input = int(input("\nIf you want to remove a word, give 1. If you want to add new words to database, give 2: \n"))
+                        if player_input == 1:
+                            print("removing...")
+                        elif player_input == 2:
+                            add_to_database()
+                
+                elif player_input == 0:
                     print("Thanks for playing!")
                     break
         except:
