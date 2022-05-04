@@ -82,7 +82,7 @@ def add_to_database():
 Module that will remove a word from the administrator to the file called  'words.txt'
 """
 def remove_form_database():
-    """This function validates the word given from administrator. If it's a valid input, then remove it form the words.txt
+    """This function validates the word given from administrator. If it's a valid input, then remove it form the words.txt. It will also delete the file from the directory.
     """
     database = read_secret_word_database()
     print(f"\nThis is the whole word list:\n{database}")
@@ -101,7 +101,12 @@ def remove_form_database():
         else:
             f.write(f'{word}\n')
     f.close()
-            
+    # delete the file too
+    for file in os.listdir("..\src"):
+        os.remove(f'{remove_word}.txt')
+
+
+
 """
 Module that will create a new text file and save player's highscore of the words. 
 """
@@ -252,11 +257,6 @@ def hangman_game():
 =========''']
     # Open and read the text file.
     words = read_secret_word_database().strip("\n")
-    # test = []
-    # for j in words.split("\n"):
-    #     test.append(j)
-    # print(test)
-    # split the text file into substrings by enter (\n). The split() funtion will create a list where the element is the words.
     words = words.split("\n")
     random_word = random.randint(0, len(words)-1)
     keep_gessing = True
@@ -347,10 +347,13 @@ def main():
                             print("Your name must start with a capital letter and be at least two letters long.")
                     
                     starting_time = int(time.time())
-                    file = f"{hangman_game()}.txt"
-                    highscore = int(time.time()) - starting_time
-                    save_highscore_files(player_name, highscore, file)
-                    print(highscore, "seconds\n")
+                    file_name = hangman_game()
+                    print(f"file_name: {file_name}")
+                    if file_name != None:
+                        file = f"{file_name}.txt"
+                        highscore = int(time.time()) - starting_time
+                        save_highscore_files(player_name, highscore, file)
+                        print(highscore, "seconds\n")
                 
                 elif player_input == 2:
                     print("\nRetrieving highscores\n")
