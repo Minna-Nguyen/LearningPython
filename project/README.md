@@ -12,7 +12,7 @@ Minna Nguyen
 
 # Screenshots
 
-![Alt text](https://images.squarespace-cdn.com/content/v1/5cfbcd840dfb94000188ad57/1560216346005-4X306RNLMZGTFTQU4KP8/Intro+1.PNG.png?format=750w "Application startup screen.")
+![Alt text](starting_screen.png "Application startup screen.")
 
 # Tech/framework used
 
