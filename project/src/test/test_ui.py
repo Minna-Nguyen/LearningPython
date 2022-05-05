@@ -1,6 +1,6 @@
 import unittest
-from ui import validate_player_input
-from ui import ask_name
+from main import validate_player_input
+from main import ask_name
 
 # python3 -m unittest test.test_ui
 
