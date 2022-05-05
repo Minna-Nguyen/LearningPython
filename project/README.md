@@ -12,7 +12,7 @@ Minna Nguyen
 
 # Screenshots
 
-![Alt text](C:\Users\35845\4A00EZ53-3006-python-development-nguyen-minna\project\starting_screen.png "Application startup screen.")
+![Alt text](starting_screen.png "Application startup screen.")
 
 # Tech/framework used
 
