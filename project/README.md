@@ -18,6 +18,7 @@ This project is written using Python and its own build-in modules such as 'os' m
 # Installation
 
 Provide step by step series of examples and explanations about how to get a development env running.
+Double click the main.exe program to run it or on command go to .\dist root and type 'main.exe'. That will also start the app. Another option is to run the actual python file on terminal etc. python3 \src\dist\main.py.
 
 # How to Run the App
 
