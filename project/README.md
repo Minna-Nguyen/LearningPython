@@ -33,3 +33,4 @@ Double click the main.exe in the 'dist' folder or type manually on terminal in '
 # Screencast
 
 [![Screencast](https://img.youtube.com/vi/2CTqg_e51BU/0.jpg)](https://www.youtube.com/watch?v=2CTqg_e51BU)
+[![Screencast](hangman_video_thumbnail.png)](https://youtu.be/xlbwmPRyWO0)
