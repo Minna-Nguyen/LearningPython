@@ -1,0 +1,8 @@
+developer
+compiler
+framework
+software
+error
+laptop
+run
+testing
