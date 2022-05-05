@@ -11,13 +11,11 @@ Minna Nguyen
 
 ![Alt text](starting_screen.png "Application startup screen.")
 ![Alt text](play_option.png "Play option of the hangman.")
-![Alt text](show_highscore.png "Display the highscores.")
+![Alt text](check_highscore.png "Display the highscores.")
 # Tech/framework used
 This project is written using Python and its own build-in modules such as 'os' module and 'random' module.
 
 # Installation
-
-Provide step by step series of examples and explanations about how to get a development env running.
 Double click the main.exe program to run it or on command go to .\dist root and type 'main.exe'. That will also start the app. Another option is to run the actual python file on terminal etc. python3 \src\dist\main.py.
 
 # How to Run the App
@@ -28,6 +26,8 @@ python3 src\dist\main.py
 
 In the root of src folder, to run the unittest: 
 python3 -m unittest test.test_ui
+
+Double click the main.exe in the 'dist' folder or type manually on terminal in 'dist' root: main.exe
 ```
 
 # Screencast
