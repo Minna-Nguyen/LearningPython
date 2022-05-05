@@ -12,7 +12,7 @@ Minna Nguyen
 
 # Screenshots
 
-![Alt text](https://github.com/Minna-Nguyen/4A00EZ53-3006-python-development-nguyen-minna/commit/815064a5f8749f3ddfd66454b07926417de6ca57 "Application startup screen.")
+![Alt text](C:\Users\35845\4A00EZ53-3006-python-development-nguyen-minna\project\starting_screen.png "Application startup screen.")
 
 # Tech/framework used
 
