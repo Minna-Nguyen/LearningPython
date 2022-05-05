@@ -16,7 +16,7 @@ Minna Nguyen
 This project is written using Python and its own build-in modules such as 'os' module and 'random' module.
 
 # Installation
-Double click the main.exe program to run it or on command go to .\dist root and type 'main.exe'. That will also start the app. Another option is to run the actual python file on terminal etc. python3 \src\dist\main.py.
+Double click the main.exe program to run it or on command go to .\dist root and type 'main.exe'. That will also start the app. Another option is to run the actual python file on terminal etc. python3 \src\dist\main.py. Make sure to be in the .\dist directory and it has all the .txt files and main.py file. in order to run the program.
 
 If this app doesn't run, all the codes and files are in 'src.zip' file!
 
@@ -35,3 +35,5 @@ Double click the main.exe in the 'dist' folder or type manually on terminal in '
 # Screencast
 
 [![Screencast](hangman_video_thumbnail.png)](https://youtu.be/xlbwmPRyWO0)
+
+If the link above doesn't work there is a hangman_video_link.txt in the 'src.zip' folder. The file contains the same link to the youtube video.
